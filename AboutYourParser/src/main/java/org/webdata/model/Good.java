@@ -18,6 +18,6 @@ public class Good {
 	private BigDecimal price;
 	private BigDecimal initialPrice;
 	// Checked on the website
-	private final String shippingCosts = "0.00";
+	private final String shippingCosts = "0.00"; 
 
 }

@@ -35,12 +35,11 @@ public class ApplicationRunner {
 
 		extractedGoods.addAll(goodsParser.startParsing(args[0]));
 		xmlWriter.goodsToXML(extractedGoods);
-
-		log.log(Level.INFO, "Amount of triggered HTTP requests: " + goodsParser.getHttpParserRequests()
-				+ GoodStage.getHttpGoodRequests());
+		
+		log.log(Level.INFO, "Amount of triggered HTTP requests: " + (GoodStage.getHttpGoodRequests() + goodsParser.getHttpParserRequests()));
 		log.log(Level.INFO, "Run-time: " + (System.currentTimeMillis() - start) / 1000 + "seconds");
 		log.log(Level.INFO, "Memory Footprint: "
-				+ ((Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024) + " kilobytes");
+				+ ((double)(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / (1024 * 1024)) + " mb");
 		log.log(Level.INFO, "Amount of extracted products: " + extractedGoods.size());
 		log.log(Level.INFO, "The program finished!");
 	}

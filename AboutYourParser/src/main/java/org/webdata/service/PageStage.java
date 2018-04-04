@@ -3,7 +3,7 @@ package org.webdata.service;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Semaphore;
- 
+
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -21,6 +21,7 @@ public class PageStage extends Thread {
 
 	@Override
 	public void run() {
+		// Current website has got two kinds of the search results page.
 		try {
 			available.acquire();
 			Element items = searchResultPage

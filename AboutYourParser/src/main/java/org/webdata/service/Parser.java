@@ -22,7 +22,7 @@ public class Parser {
 
 	private volatile List<Good> goods = new LinkedList<Good>();
 
-	private volatile int httpParserRequests = 0;
+	private int httpParserRequests = 0;
 
 	public List<Good> startParsing(String keyword) {
 
@@ -41,24 +41,25 @@ public class Parser {
 
 		try {
 
-			for (int i = 0; i < 20; i++) {
+			for (int i = 0; i < 1; i++) {
 				checkSearchResultPage = Jsoup.connect(checkedUrl).timeout(0).get();
-				httpParserRequests++;
-				if (checkSearchResultPage != null)
+				if (checkSearchResultPage != null) {
+					httpParserRequests++;
 					break;
+				}
 			}
 
-			// Checking whether the goods were found
+			//Checking whether the goods were found
 			if (checkSearchResultPage.getElementsByClass("xxl split-search-headline").first() == null) {
 				do {
 					try {
-						for (int i = 0; i < 20; i++) {
+						for (int i = 0; i < 1; i++) {
 
 							searchResultPage = Jsoup.connect(checkedUrl + "&page=" + pageNumber).timeout(0).get();
-							httpParserRequests++;
 							if (searchResultPage != null) {
 								log.log(Level.INFO, "Connected to " + pageNumber + " page! URL: " + checkedUrl
 										+ "&page=" + pageNumber);
+								httpParserRequests++;
 								break;
 							}
 						}
@@ -68,8 +69,7 @@ public class Parser {
 						e.printStackTrace();
 					}
 					pageNumber++;
-				} while (searchResultPage.getElementsByClass("next").first() != null
-						|| searchResultPage.getElementsByClass("nextButton_3hmsj").first() != null);
+				} while (searchResultPage.getElementsByClass("next").first() != null || searchResultPage.getElementsByClass("nextButton_3hmsj").first() != null);
 			} else {
 				log.log(Level.INFO,
 						"Search for " + keyword + " did not match any results. The program is shutting down!");

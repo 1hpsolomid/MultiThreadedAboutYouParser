@@ -19,7 +19,7 @@ public class XMLWriter {
 		String endLine = "\n</offers>";
 		FileWriter writer = null;
 		try {
-			writer = new FileWriter(FILE_PATH, true);
+			writer = new FileWriter(FILE_PATH);
 			writer.write(startLine);
 			
 			for (Good good : goods) {

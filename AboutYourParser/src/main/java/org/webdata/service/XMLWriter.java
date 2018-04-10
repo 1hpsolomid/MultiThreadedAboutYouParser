@@ -28,7 +28,7 @@ public class XMLWriter {
 						+ good.getPrice() + "</price>" + "\n\t\t<initialPrice>" + good.getInitialPrice()
 						+ "</initialPrice>" + "\n\t\t<description>" + good.getDescription() + "</description>"
 						+ "\n\t\t<size>" + good.getSize() + "</size>" + "\n\t\t<articleID>" + good.getArcicleID()
-						+ "</articleID" + "\n\t\t<shippingCosts>" + good.getShippingCosts() + "</shippingCosts"
+						+ "</articleID>" + "\n\t\t<shippingCosts>" + good.getShippingCosts() + "</shippingCosts>"
 						+ "\n\t</offer>");
 			}
 			
